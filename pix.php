@@ -1,5 +1,5 @@
 <?php 
-require_once('../conexao.php');
+
 require_once('ApiConfig.php');
 
 $pgto = $_POST['pgto'];
@@ -27,23 +27,23 @@ if($valor <= 0){
 $curl = curl_init();
 
     $dados["transaction_amount"]                    = (float)$valor;
-    $dados["description"]                           = "Venda PDV";
+    $dados["description"]                           = "Venda";
     $dados["external_reference"]                    = "2";
     $dados["payment_method_id"]                     = "pix";
     $dados["notification_url"]                      = "https://google.com";
-    $dados["payer"]["email"]                        = "teste@hotmail.com";
-    $dados["payer"]["first_name"]                   = "User";
-    $dados["payer"]["last_name"]                    = "Teste";
+    $dados["payer"]["email"]                        = "Email";
+    $dados["payer"]["first_name"]                   = "Nome";
+    $dados["payer"]["last_name"]                    = "SobreNome";
     
     $dados["payer"]["identification"]["type"]       = "CPF";
-    $dados["payer"]["identification"]["number"]     = "34152426764";
+    $dados["payer"]["identification"]["number"]     = "numeroCPF";
     
-    $dados["payer"]["address"]["zip_code"]          = "06233200";
-    $dados["payer"]["address"]["street_name"]       = "Av. das Nações Unidas";
-    $dados["payer"]["address"]["street_number"]     = "3003";
-    $dados["payer"]["address"]["neighborhood"]      = "Bonfim";
-    $dados["payer"]["address"]["city"]              = "Osasco";
-    $dados["payer"]["address"]["federal_unit"]      = "SP";
+    $dados["payer"]["address"]["zip_code"]          = "cep";
+    $dados["payer"]["address"]["street_name"]       = "Logradouro";
+    $dados["payer"]["address"]["street_number"]     = "Numero";
+    $dados["payer"]["address"]["neighborhood"]      = "Bairro";
+    $dados["payer"]["address"]["city"]              = "Cidade";
+    $dados["payer"]["address"]["federal_unit"]      = "Estado";
 
     curl_setopt_array($curl, array(
         CURLOPT_URL => 'https://api.mercadopago.com/v1/payments',
